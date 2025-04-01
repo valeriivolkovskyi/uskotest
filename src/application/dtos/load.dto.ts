@@ -12,15 +12,6 @@ export interface LoadRecordDTO {
   policyNotes?: string;
 }
 
-interface ICreateLoadInputDTO {
-  customerId: string;
-  pickupLocation: string;
-  dropoffLocation: string;
-  scheduledTime: Date;
-  companyType: 'logistics' | 'expedite';
-  policyNotes?: string;
-}
-
 export class CreateLoadInputDTO {
   public customerId: string;
   public pickupLocation: string;
@@ -29,7 +20,7 @@ export class CreateLoadInputDTO {
   public companyType: 'logistics' | 'expedite';
   public policyNotes?: string;
 
-  constructor(data: ICreateLoadInputDTO) {
+  constructor(data: CreateLoadInputDTO) {
     if (!data) {
       throw new ValidationError('Input data is required');
     }
@@ -76,18 +67,12 @@ export class CreateLoadInputDTO {
   }
 }
 
-interface IUpdateLoadInputDTO {
-  companyType: 'logistics' | 'expedite';
-  status: string;
-  id: string;
-}
-
 export class UpdateLoadInputDTO {
   public companyType: 'logistics' | 'expedite';
   public status: string;
   public id: string;
 
-  constructor(data: IUpdateLoadInputDTO) {
+  constructor(data: UpdateLoadInputDTO) {
     if (!data) {
       throw new ValidationError('Input data is required');
     }
