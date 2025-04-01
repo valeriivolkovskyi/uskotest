@@ -5,7 +5,7 @@ import {
   CreateLoadInputDTO,
   LoadRecordDTO,
   UpdateLoadInputDTO,
-} from 'application/dtos/loadRecordDTO';
+} from 'application/dtos/load.dto';
 
 @Injectable()
 export class LoadService {
@@ -15,20 +15,20 @@ export class LoadService {
   ) {}
 
   async create(companyType: string, props: LoadRecordDTO) {
-    const input: CreateLoadInputDTO = {
+    const input = new CreateLoadInputDTO({
       ...props,
       companyType: companyType as 'logistics' | 'expedite',
-    };
+    });
 
     return this.createLoadUseCase.execute(input);
   }
 
   async updateStatus(companyType: string, loadId: string, newStatus: string) {
-    const input: UpdateLoadInputDTO = {
+    const input = new UpdateLoadInputDTO({
       companyType: companyType as 'logistics' | 'expedite',
       id: loadId,
       status: newStatus,
-    };
+    });
 
     return this.updateLoadStatusUseCase.execute(input);
   }

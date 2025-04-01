@@ -2,8 +2,8 @@ import {
   CreateLoadInputDTO,
   LoadRecordDTO,
   UpdateLoadInputDTO,
-} from 'application/dtos/loadRecordDTO';
-import { LoadMapper } from 'application/data-mappers/LoadMapper';
+} from 'application/dtos/load.dto';
+import { UpdateLoadMapper } from 'application/data-mappers/load.data-mappers';
 import { IUpdateLoadRepository } from 'application/repositories/interfaces';
 import { NotFoundError } from 'common/errors';
 import { DefaultLoadFactory } from 'application/factories/load.factory';
@@ -20,15 +20,15 @@ export class UpdateLoadStatusUseCase {
       throw new NotFoundError(`Load with ID ${input.id} not found`);
     }
 
-    const mapper = new LoadMapper();
     const dto: CreateLoadInputDTO = {
       ...existingRecord,
       companyType: input.companyType as 'logistics' | 'expedite',
     };
     const loadEntity = this.loadFactory.create(dto);
 
-    loadEntity.updateStatus(LoadMapper.mapStatus(input.status));
+    loadEntity.updateStatus(UpdateLoadMapper.mapStatus(input.status));
 
+    const mapper = new UpdateLoadMapper();
     const updatedDTO = mapper.toRecordDTO(loadEntity);
 
     await this.loadRepository.update(updatedDTO);

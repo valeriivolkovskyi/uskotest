@@ -6,7 +6,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { LoadRecordDTO } from 'application/dtos/loadRecordDTO';
+import { LoadRecordDTO } from 'application/dtos/load.dto';
 import { LoadService } from 'application/services/load.service';
 
 @Controller('/:companyType/loads')

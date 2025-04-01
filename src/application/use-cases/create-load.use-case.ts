@@ -1,5 +1,5 @@
-import { CreateLoadInputDTO } from 'application/dtos/loadRecordDTO';
-import { LoadMapper } from 'application/data-mappers/LoadMapper';
+import { CreateLoadInputDTO } from 'application/dtos/load.dto';
+import { UpdateLoadMapper } from 'application/data-mappers/load.data-mappers';
 import { ICreateLoadRepository } from 'application/repositories/interfaces';
 import { DefaultLoadFactory } from 'application/factories/load.factory';
 
@@ -12,7 +12,7 @@ export class CreateLoadUseCase {
   async execute(input: CreateLoadInputDTO) {
     const loadEntity = this.loadFactory.create(input);
     loadEntity.createLoad();
-    const dto = new LoadMapper().toRecordDTO(loadEntity);
+    const dto = new UpdateLoadMapper().toRecordDTO(loadEntity);
 
     await this.loadRepository.create(dto);
     return loadEntity;

@@ -2,7 +2,7 @@ import {
   ICreateLoadRepository,
   IUpdateLoadRepository,
 } from 'application/repositories/interfaces';
-import { LoadRecordDTO } from 'application/dtos/loadRecordDTO';
+import { LoadRecordDTO } from 'application/dtos/load.dto';
 import { NotFoundError } from 'common/errors';
 
 // for debug

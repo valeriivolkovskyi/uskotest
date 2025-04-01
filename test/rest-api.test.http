@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### Update Load Status
-PATCH http://localhost:3000/expedite/loads/78cfa99a-5169-4922-aed6-de7657ee3ef0/status
+PATCH http://localhost:3000/expedite/loads/cd7cb4f7-e2e2-4b5d-ab5e-7e320026614c/status
 Content-Type: application/json
 
 {

@@ -12,12 +12,12 @@ export interface LoadProps {
   scheduledTime: Date;
   createdAt?: Date;
   updatedAt?: Date;
-  status: Status;
+  status?: Status;
 }
 
 export type LoadData = Required<LoadProps>;
 export type ExpediteLoadData = Required<ExpediteLoadProps>;
 
 export interface ExpediteLoadProps extends LoadProps {
-  policyNotes: string;
+  policyNotes?: string;
 }

@@ -1,6 +1,6 @@
-import { DomainError } from 'common/errors';
+import { ValidationError } from 'common/errors';
 import { LoadEntity } from './load.entity';
-import { ExpediteLoadProps, ExpediteLoadData } from 'domain/data/load.data';
+import { ExpediteLoadData, ExpediteLoadProps } from 'domain/data/load.data';
 
 export class ExpediteLoadEntity extends LoadEntity {
   readonly policyNotes: string;
@@ -8,9 +8,7 @@ export class ExpediteLoadEntity extends LoadEntity {
   constructor(props: ExpediteLoadProps) {
     super(props);
 
-    this.validatePolicyNotes(props.policyNotes);
-
-    this.policyNotes = props.policyNotes;
+    this.policyNotes = this.validatePolicyNotes(props.policyNotes);
   }
 
   override getLoadData(): ExpediteLoadData {
@@ -28,7 +26,9 @@ export class ExpediteLoadEntity extends LoadEntity {
 
   private validatePolicyNotes(policyNotes?: string) {
     if (!policyNotes) {
-      throw new DomainError('Expedite load requires policyNotes.');
+      throw new ValidationError('Expedite load requires policyNotes.');
     }
+
+    return policyNotes;
   }
 }

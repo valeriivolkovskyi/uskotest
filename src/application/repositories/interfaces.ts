@@ -1,4 +1,4 @@
-import { LoadRecordDTO } from 'application/dtos/loadRecordDTO';
+import { LoadRecordDTO } from 'application/dtos/load.dto';
 
 export interface ICreateLoadRepository {
   create(load: LoadRecordDTO): Promise<void>;
